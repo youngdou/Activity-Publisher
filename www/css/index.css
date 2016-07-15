@@ -1,0 +1,53 @@
+body {
+	background-color: #fbf9fe;
+}
+.icon-img {
+	width:20px;
+	margin-right:5px;
+	display:block
+}
+h1 {
+	font-size: 24px;
+	display: inline-block;
+}
+.tips {
+	color: #888888;
+	font-size: 15px;
+}
+.header {
+	text-align: center;
+	margin: 6% 0 20% 0;
+}
+.weui_cells_title {
+	font-weight: bold;
+}
+.inlne-icon-img {
+	width:20px;
+	vertical-align: top;
+	margin-right: 0.5em;
+}
+.weui_cells {
+	color: #101010;
+}
+.header img {
+	width:25px;
+	margin-right:5px;
+}
+img {
+	width: 100%;
+	height: 100%;
+}
+.main-body {
+	margin: 1em 0 3em 0;
+}
+.pushButton {
+	padding: 1em;
+}
+.footer {
+	width: 100%;
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+	color: #888888;
+	font-size: 13px;
+}
