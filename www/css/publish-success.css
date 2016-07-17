@@ -1,0 +1,12 @@
+.header {
+	text-align: center;
+	margin: 6% 0 20% 0;
+}
+.footer {
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	text-align: center;
+	color: #888888;
+	font-size: 13px;
+}

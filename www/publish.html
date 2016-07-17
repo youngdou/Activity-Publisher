@@ -6,7 +6,11 @@
         <title>发布活动</title>
         <!-- 引入 WeUI -->
         <link rel="stylesheet" href="css/weui.css"/>
-        <link rel="stylesheet" href="css/index.css"/>
+        <link rel="stylesheet" href="css/publish.css"/>
+        <link rel="stylesheet" href="css/jquery-weui.min.css">
+        <script src="js/jquery-2.1.4.js"></script>
+        <script src="js/jquery-weui.min.js"></script>
+        <script src="js/publish.js" type="text/javascript"></script>
     </head>
     <body>
         <div class="header">
@@ -16,100 +20,118 @@
         <div class="main-body">
 
             <!-- 活动名称 -->
-            <div class="weui_cells_title"><img src="images/actName.png" alt="icon" class="inlne-icon-img">活动名称</div>
+            <div class="weui_cells_title"><img src="images/actName.png" alt="icon" class="inlne-icon-img">活动名称<span class="necessary">*</span>
+                <span class="showTips" id="actName_showTips"><i class="weui_icon_warn"></i> <span class="warningTips">字数过多</span></span>
+            </div>
             <div class="weui_cells weui_cells_form">
                 <div class="weui_cell">
-
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="text">
+                        <input id="actName" class="weui_input" type="text">
                     </div>
                 </div>
             </div>
 
             <!-- 活动时间 -->
-            <div class="weui_cells_title"><img src="images/actTime.png" alt="icon" class="inlne-icon-img">时间</div>
+            <div class="weui_cells_title"><img src="images/actTime.png" alt="icon" class="inlne-icon-img">时间<span class="necessary">*</span>
+                <span class="showTips" id="actTime_showTips"><i class="weui_icon_warn"></i> <span class="warningTips">字数过多</span></span>
+            </div>
             <div class="weui_cells weui_cells_form">
                 <div class="weui_cell">
                     <div class="weui_cell_bd weui_cell_primary">
-                        <textarea class="weui_textarea" placeholder="例：7月10日（星期日）9：00 - 11：00" rows="2"></textarea>
-                              <div class="weui_textarea_counter"><span>0</span>/100</div>
+                        <textarea id="actTime" class="weui_textarea" placeholder="例：7月10日（星期日）9：00 - 11：00" rows="2"></textarea>
+                              <div class="weui_textarea_counter"><span id="actTime_counter">0</span>/100</div>
                     </div>
                 </div>
             </div>
 
             <!-- 活动地点 -->
-            <div class="weui_cells_title"><img src="images/actLoc.png" alt="icon" class="inlne-icon-img">地点</div>
+            <div class="weui_cells_title"><img src="images/actLoc.png" alt="icon" class="inlne-icon-img">地点<span class="necessary">*</span>
+                <span class="showTips" id="actLoc_showTips"><i class="weui_icon_warn"></i> <span class="warningTips">字数过多</span></span>
+            </div>
             <div class="weui_cells weui_cells_form">
                 <div class="weui_cell">
                     <div class="weui_cell_bd weui_cell_primary">
-                        <textarea class="weui_textarea" placeholder="例：东校区篮球场" rows="2"></textarea>
-                              <div class="weui_textarea_counter"><span>0</span>/100</div>
+                        <textarea id="actLoc" class="weui_textarea" placeholder="例：东校区篮球场" rows="2"></textarea>
+                              <div class="weui_textarea_counter"><span id="actLoc_counter">0</span>/100</div>
                     </div>
                 </div>
             </div>
 
             <!-- 活动简介 -->
-            <div class="weui_cells_title"><img src="images/actIntru.png" alt="icon" class="inlne-icon-img">活动简介</div>
+            <div class="weui_cells_title"><img src="images/actIntru.png" alt="icon" class="inlne-icon-img">活动简介<span class="necessary">*</span>
+                <span class="showTips" id="actIntru_showTips"><i class="weui_icon_warn"></i> <span class="warningTips">字数过多</span></span>
+            </div>
             <div class="weui_cells weui_cells_form">
                 <div class="weui_cell">
                     <div class="weui_cell_bd weui_cell_primary">
-                        <textarea class="weui_textarea" placeholder="请在此概括活动内容" rows="2"></textarea>
-                              <div class="weui_textarea_counter"><span>0</span>/50</div>
+                        <textarea id="actIntru" class="weui_textarea" placeholder="请在此概括活动内容" rows="2"></textarea>
+                              <div class="weui_textarea_counter"><span  id="actIntru_counter">0</span>/50</div>
                     </div>
                 </div>
             </div>
 
             <!-- 活动对象 -->
-            <div class="weui_cells_title"><img src="images/actFor.png" alt="icon" class="inlne-icon-img">活动对象</div>
+            <div class="weui_cells_title"><img src="images/actFor.png" alt="icon" class="inlne-icon-img">活动对象<span class="necessary">*</span>
+                <span class="showTips" id="actFor_showTips"><i class="weui_icon_warn"></i> <span class="warningTips">字数过多</span></span>
+            </div>
             <div class="weui_cells weui_cells_form">
                 <div class="weui_cell">
                     <div class="weui_cell_bd weui_cell_primary">
-                        <textarea class="weui_textarea" placeholder="例：东校区全体在校生" rows="2"></textarea>
-                              <div class="weui_textarea_counter"><span>0</span>/30</div>
+                        <textarea id="actFor" class="weui_textarea" placeholder="例：东校区全体在校生" rows="2"></textarea>
+                              <div class="weui_textarea_counter"><span id="actFor_counter">0</span>/30</div>
                     </div>
                 </div>
             </div>
 
             <!-- 主办方 -->
-            <div class="weui_cells_title"><img src="images/actPub.png" alt="icon" class="inlne-icon-img">主办方</div>
+            <div class="weui_cells_title"><img src="images/actPub.png" alt="icon" class="inlne-icon-img">主办方<span class="necessary">*</span>
+                <span class="showTips" id="actPub_showTips"><i class="weui_icon_warn"></i> <span class="warningTips">字数过多</span></span>
+            </div>
             <div class="weui_cells weui_cells_form">
                 <div class="weui_cell">
                     <div class="weui_cell_bd weui_cell_primary">
-                        <textarea class="weui_textarea" placeholder="请填写活动主办方全称" rows="2"></textarea>
-                              <div class="weui_textarea_counter"><span>0</span>/50</div>
+                        <textarea id="actPub" class="weui_textarea" placeholder="请填写活动主办方全称" rows="2"></textarea>
+                              <div class="weui_textarea_counter"><span id="actPub_counter">0</span>/50</div>
                     </div>
                 </div>
             </div>
 
             <!-- 报名方式 -->
-            <div class="weui_cells_title"><img src="images/actJoin.png" alt="icon" class="inlne-icon-img">报名方式</div>
+            <div class="weui_cells_title"><img src="images/actJoin.png" alt="icon" class="inlne-icon-img">报名方式<span class="necessary">*</span>
+                <span class="showTips" id="actJoin_showTips"><i class="weui_icon_warn"></i> <span class="warningTips">字数过多</span></span>
+            </div>
             <div class="weui_cells weui_cells_form">
                 <div class="weui_cell">
                     <div class="weui_cell_bd weui_cell_primary">
-                        <textarea class="weui_textarea" placeholder="请用文字描述活动的报名方式，例如公众号名称、QQ群号、活动官网、线下报名时间地点等" rows="3"></textarea>
-                              <div class="weui_textarea_counter"><span>0</span>/200</div>
+                        <textarea id="actJoin" class="weui_textarea" placeholder="请用文字描述活动的报名方式，例如公众号名称、QQ群号、活动官网、线下报名时间地点等" rows="3"></textarea>
+                              <div class="weui_textarea_counter"><span id="actJoin_counter">0</span>/200</div>
                     </div>
                 </div>
             </div>
 
             <!-- 报名截止日期 -->
-            <div class="weui_cells_title"><img src="images/actDDL.png" alt="icon" class="inlne-icon-img">报名截止日期</div>
+            <div class="weui_cells_title"><img src="images/actDDL.png" alt="icon" class="inlne-icon-img">报名截止日期<span class="necessary">*</span>
+                <span class="showTips" id="actDDL_showTips"><i class="weui_icon_warn"></i> <span class="warningTips">字数过多</span></span>
+            </div>
             <div class="weui_cells weui_cells_form">
                 <div class="weui_cell">
                     <div class="weui_cell_bd weui_cell_primary">
-                        <input class="weui_input" type="text">
+                        <input class="weui_input" id="time" type="text">
                     </div>
                 </div>
             </div>
 
             <!-- 活动详情 -->
-            <div class="weui_cells_title"><img src="images/actDetail.png" alt="icon" class="inlne-icon-img">活动详情</div>
+            <div class="weui_cells_title"><img src="images/actDetail.png" alt="icon" class="inlne-icon-img">活动详情<span class="necessary">*</span>
+                <span class="showTips" id="actDetail_showTips"><i class="weui_icon_warn"></i> <span class="warningTips">字数过多</span></span>
+            </div>
             <div class="weui_cells weui_cells_form">
                 <div class="weui_cell">
                     <div class="weui_cell_bd weui_cell_primary">
                         <div class="weui_uploader">
                             <div class="weui_uploader_hd weui_cell">
-                                <div class="weui_cell_bd weui_cell_primary" style="color:#A9A9A9">使用文字或者二维码图片描述何处可获取活动详情，点击下方加号添加图片</div>
+                                <textarea id="actDetail" class="weui_textarea" placeholder="使用文字或者二维码图片描述何处可获取活动详情，点击下方加号添加图片" rows="3"></textarea>
+                                      <div class="weui_textarea_counter"><span id="actDetail_counter">0</span>/200</div>                         
                             </div>
                             <div class="weui_uploader_bd">
                                 <div class="weui_uploader_input_wrp">
@@ -122,7 +144,9 @@
             </div>
 
             <!-- 活动奖励 -->
-            <div class="weui_cells_title"><img src="images/actReward.png" alt="icon" class="inlne-icon-img">活动奖励（选填）</div>
+            <div class="weui_cells_title"><img src="images/actReward.png" alt="icon" class="inlne-icon-img">活动奖励（选填）
+                <span class="showTips" id="actReward_showTips"><i class="weui_icon_warn"></i> <span class="warningTips">字数过多</span></span>
+            </div>
             <div class="weui_cells weui_cells_form">
                 <div class="weui_cell">
                     <div class="weui_cell_hd">
@@ -151,18 +175,21 @@
                     </div>
                 </div>
             </div>
-            <div class="weui_cells_title"><img src="images/actDem.png" alt="icon" class="inlne-icon-img">活动要求</div>
+            <div class="weui_cells_title"><img src="images/actDem.png" alt="icon" class="inlne-icon-img">活动要求（选填）
+                <span class="showTips" id="actDem_showTips"><i class="weui_icon_warn"></i> <span class="warningTips">字数过多</span></span>
+            </div>
             <div class="weui_cells weui_cells_form">
                 <div class="weui_cell">
                     <div class="weui_cell_bd weui_cell_primary">
-                        <textarea class="weui_textarea" placeholder="请填写活动的特殊要求" rows="3"></textarea>
-                              <div class="weui_textarea_counter"><span>0</span>/100</div>
+                        <textarea id="actDem" class="weui_textarea" placeholder="请填写活动的特殊要求" rows="3"></textarea>
+                              <div class="weui_textarea_counter"><span id="actDem_counter">0</span>/100</div>
                     </div>
                 </div>
             </div>
 
+            <!-- 等待 -->
             <div class="pushButton">
-                <a href="javascript:;" class="weui_btn weui_btn_primary">发布</a>
+                <a href="javascript:;" id="public_button" class="weui_btn weui_btn_primary">发布</a>
                 <div id="loadingToast" class="weui_loading_toast" style="display:none;">
                     <div class="weui_mask_transparent"></div>
                     <div class="weui_toast">
@@ -190,5 +217,6 @@
         <!-- 活动要求 -->
 
         <div class="footer">中东活动小贴士</div>
+
     </body>
 </html>

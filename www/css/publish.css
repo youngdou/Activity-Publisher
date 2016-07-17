@@ -40,12 +40,25 @@ img {
 .main-body {
 	margin: 1em 0 3em 0;
 }
-
+.pushButton {
+	padding: 1em;
+}
 .footer {
+	height: 100%;
 	width: 100%;
 	text-align: center;
-	position: fixed;
-	bottom: 0;
 	color: #888888;
 	font-size: 13px;
+}
+.necessary {
+	color: red;
+	font-size: 1.2em;
+}
+
+.showTips {
+	float: right;
+	display: none;
+}
+.warningTips {
+	display: none;
 }
