@@ -134,13 +134,13 @@ function bindCheckOne(selector, numOfWords) {
 }
 function CheckActReward() {
 	//体育章
-	checkOneReward("#PEChapter", 2);
+	checkOneReward("#PEChapter", 30);
 
 	//公益时
-	checkOneReward("#welTime", 2);
+	checkOneReward("#welTime", 30);
 
 	//其他奖励
-	checkOneReward("#other", 2);
+	checkOneReward("#other", 30);
 }
 function checkOneReward(selector, numOfWords) {
 	$(selector).keyup(function() {
