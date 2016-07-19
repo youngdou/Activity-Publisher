@@ -61,6 +61,7 @@ function checkNeceValid() {
 
 	if (validNum != isCheckPassLength) {
 		//提示格式错误
+		checkEmpty();
         $.toptip('格式好像有错/漏ఠ_ఠ', 'error');
 	} else {
 		//发布信息
@@ -154,8 +155,16 @@ function showSuccess(selector) {
 	$(selector+"_showTips span").hide();
 	$(selector+"_showTips").fadeIn(150);
 }
-function showFaild(selector) {
+function showFaild(selector, warnTipsText="字数有点多哦") {
+	$(selector+"_showTips .warningTips").text(warnTipsText);
 	$(selector+"_showTips i").attr("class", "weui_icon_warn");
 	$(selector+"_showTips").fadeIn(150);
 	$(selector+"_showTips .warningTips").fadeIn(150);
+}
+function checkEmpty() {
+	for (var key in isCheckPass) {
+		if (isCheckPass[key] == false && key !== "#actReward" && key != "#actDem") {
+			showFaild(key, "艾玛，还没填呢");
+		}
+	}
 }
