@@ -65,16 +65,36 @@ class SuccessPubHandler(BaseHandler):
     def get(self):
         self.render("publish-success.html")
     
+class ShowCollectionHandler(BaseHandler):
+    def get(self):
+        actType = self.get_query_argument("Title", None)
+        if not actType:
+            self.write("请查询相应类型的活动\n")
+            return
+
+
+        activity = self.db.query("SELECT * FROM activity WHERE actType = %s;", actType)
+        if not activity:
+            self.write("暂时还没有此类型的活动")
+            return
+        self.render("collection.html", activity=activity)
+
+
+
 class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
             (r"/", IndexHandler),
             (r"/publish", PublishHandler),
             (r"/success-publish", SuccessPubHandler),
+            (r"/collection", ShowCollectionHandler)
         ]
         settings = dict(
             template_path=os.path.join(os.path.dirname(__file__), "templates"),
             static_path=os.path.join(os.path.dirname(__file__), "static"),
+            ui_modules={"ActItem": activityItemModule,
+                        "Header": headerModules,
+                        "Footer": footerModule},
             debug=True,
         )
         super(Application, self).__init__(handlers, **settings)
@@ -98,7 +118,17 @@ class Application(tornado.web.Application):
         finally:
             print "finish start the database"
 
-                
+class activityItemModule(tornado.web.UIModule):
+    def render(self, activity, index):
+        return self.render_string("modules/activityItem.html", activity=activity, index=index)
+
+class footerModule(tornado.web.UIModule):
+    def render(self):
+        return self.render_string("modules/footer.html")
+
+class headerModules(tornado.web.UIModule):
+    def render(self):
+        return self.render_string("modules/header.html")
 
 def main():
     tornado.options.parse_command_line()

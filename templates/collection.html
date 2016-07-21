@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>中大活动小贴士</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <div style="width:50%;margin:0 auto">
+      <p></p>
+      <section style="font-family: 微软雅黑;">
+          <section class="" style="">
+            <!-- 网页头部 -->
+              {% module Header() %}
+
+              {% for i, act in enumerate(activity) %}
+                {% module ActItem(act, i+1) %}
+              {% end %}
+
+              <!-- 网页脚部 -->
+              {% module Footer() %}
+          </section>
+      </section>
+      <p></p>
+      <p>
+          <br/>
+      </p>
+    </div>
+  </body>
+</html>
