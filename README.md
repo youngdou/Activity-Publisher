@@ -3,7 +3,7 @@
 > Author: YoungDou
 
 ## 技术架构：
----
+
 ### 前端
 - `weui`
 - `weui-jquery`, `jquery`
