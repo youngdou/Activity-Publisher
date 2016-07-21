@@ -66,6 +66,7 @@ function checkNeceValid() {
 	} else {
 		//发布信息
 		$.showLoading("发布中");
+		$("#Actform").submit();
 	}
 }
 function checkCounterOk(selector) {
@@ -102,7 +103,7 @@ function bindCheck() {
 		"#actFor" 		: 	30,
 		"#actPub" 		: 	50,
 		"#actJoin" 		: 	200,
-		"#actDetail" 	: 	2,
+		"#actDetail" 	: 	200,
 		"#actDem" 		: 	100
 	}
 
@@ -167,4 +168,10 @@ function checkEmpty() {
 			showFaild(key, "艾玛，还没填呢");
 		}
 	}
+}
+function getTitle() {
+	var url = window.location.href;
+	queryString = (url.split("?"))[1];
+	Title = (queryString.split("="))[1];
+	return Title;
 }
