@@ -3,60 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-        <title>发布活动</title>
-        <!-- 引入 WeUI -->
-        <link rel="stylesheet" href="{{ static_url("css/weui.css") }}"/>
-        <link rel="stylesheet" href="{{ static_url("css/index.css") }}"/>
+        <title>中大活动小贴士</title>
+        <link rel="stylesheet" type="text/css" href="{{ static_url("css/manage.css") }}">
+
     </head>
     <body>
         <div class="header">
-            <div><img src="{{ static_url("images/publish.png") }}"><h1>发布活动</h1></div>
-            <p class="tips">在这里，把你的活动告诉中大人</p>
+            <h1>中大活动汇总</h1>
         </div>
-        <div class="weui_cells_title">选择活动类型</div>
-        <div class="weui_cells weui_cells_access">
-
-            <a class="weui_cell" href="/publish?Title=welfare">
-                <div class="weui_cell_hd icon-img">
-                    <img src="{{ static_url("images/welfare.png") }}" alt="icon">
-                </div>
-                <div class="weui_cell_bd weui_cell_primary">
-                    <p>公益</p>
-                </div>
-                <div class="weui_cell_ft">
-                </div>
-            </a>
-            <a class="weui_cell" href="/publish?Title=PE">
-                <div class="weui_cell_hd " style="width:20px;margin-right:5px;display:block">
-                    <img src="{{ static_url("images/PE.png") }}" alt="icon">
-                </div>
-                <div class="weui_cell_bd weui_cell_primary">
-                    <p>体育</p>
-                </div>
-                <div class="weui_cell_ft">
-                </div>
-            </a>
-            <a class="weui_cell" href="/publish?Title=game">
-                <div class="weui_cell_hd ">
-                    <img src="{{ static_url("images/game.png") }}" alt="icon" style="width:20px;margin-right:5px;display:block">
-                </div>
-                <div class="weui_cell_bd weui_cell_primary">
-                    <p>比赛</p>
-                </div>
-                <div class="weui_cell_ft">
-                </div>
-            </a>
-            <a class="weui_cell" href="/publish?Title=lecture">
-                <div class="weui_cell_hd ">
-                    <img src="{{ static_url("images/lecture.png") }}" alt="icon" style="width:20px;margin-right:5px;display:block">
-                </div>
-                <div class="weui_cell_bd weui_cell_primary">
-                    <p>讲座</p>
-                </div>
-                <div class="weui_cell_ft">
-                </div>
-            </a>
+        <div class="body">
+            <a href="/collection?Title=welfare">公益</a>
+            <a href="/collection?Title=PE">体育</a>
+            <a href="/collection?Title=game">比赛</a>
+            <a href="/collection?Title=lecture">讲座</a>
         </div>
-        <div class="footer">中大活动小贴士</div>
+        <div class="footer"><span>中大活动小贴士</span></div>
     </body>
 </html>
