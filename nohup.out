@@ -1,0 +1,54 @@
+Vim: Warning: Output is not to a terminal
+Vim: Warning: Input is not from a terminal
+[1;24r[?25h[?8c[?25h[?0c[27m[24m[0m[H[J[?25l[?1c[24;1H"LICENSE" 21L, 1075C[1;1HThe MIT License (MIT)
+
+Copyright (c) 2016 youngdou
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+[1m[34m~                                                                               [23;1H~                                                                               [0m[24;63H1,1[11CAll[1;1H[?25h[?0c[24;1HVim: Error reading input, exiting...
+Vim: Finished.
+[24;1H
+[I 160723 15:38:47 web:1971] 304 GET / (120.236.174.155) 6.84ms
+[I 160723 15:39:04 web:1971] 304 GET / (120.236.174.155) 3.72ms
+[I 160723 15:39:04 web:1971] 304 GET /static/css/weui.css?v=3aadae9fd8645549f33998bee395f71d (120.236.174.155) 4.72ms
+[I 160723 15:39:04 web:1971] 304 GET /static/images/publish.png?v=6c3e1847a52be1dbaedb059acb2e6964 (120.236.174.155) 0.73ms
+[I 160723 15:39:04 web:1971] 304 GET /static/css/index.css?v=72bb80d608cc37bc10fc150cea454a37 (120.236.174.155) 0.72ms
+[I 160723 15:39:04 web:1971] 304 GET /static/images/welfare.png?v=7cdd329ece0f9a05db4212ffb9e74c5f (120.236.174.155) 1.02ms
+[I 160723 15:39:04 web:1971] 304 GET /static/images/PE.png?v=14328c64f61b6761aaad02223006ab46 (120.236.174.155) 0.69ms
+[I 160723 15:39:04 web:1971] 304 GET /static/images/game.png?v=9b50afc4db3f4a0ae7104d343071e69e (120.236.174.155) 1.03ms
+[I 160723 15:39:04 web:1971] 304 GET /static/images/lecture.png?v=9cada4270531e2f7d4d7544e6dc94af1 (120.236.174.155) 0.72ms
+[I 160723 15:39:06 web:1971] 304 GET / (120.236.174.155) 3.51ms
+[I 160723 15:39:06 web:1971] 304 GET /static/css/index.css?v=72bb80d608cc37bc10fc150cea454a37 (120.236.174.155) 1.03ms
+[I 160723 15:39:06 web:1971] 304 GET /static/css/weui.css?v=3aadae9fd8645549f33998bee395f71d (120.236.174.155) 1.19ms
+[I 160723 15:39:06 web:1971] 304 GET /static/images/publish.png?v=6c3e1847a52be1dbaedb059acb2e6964 (120.236.174.155) 0.66ms
+[I 160723 15:39:06 web:1971] 304 GET /static/images/welfare.png?v=7cdd329ece0f9a05db4212ffb9e74c5f (120.236.174.155) 1.03ms
+[I 160723 15:39:06 web:1971] 304 GET /static/images/game.png?v=9b50afc4db3f4a0ae7104d343071e69e (120.236.174.155) 1.21ms
+[I 160723 15:39:06 web:1971] 304 GET /static/images/lecture.png?v=9cada4270531e2f7d4d7544e6dc94af1 (120.236.174.155) 0.70ms
+[I 160723 15:39:06 web:1971] 304 GET /static/images/PE.png?v=14328c64f61b6761aaad02223006ab46 (120.236.174.155) 0.70ms
+[I 160723 15:39:06 web:1971] 304 GET / (120.236.174.155) 3.30ms
+[I 160723 15:39:06 web:1971] 304 GET /static/images/publish.png?v=6c3e1847a52be1dbaedb059acb2e6964 (120.236.174.155) 1.11ms
+[I 160723 15:39:06 web:1971] 304 GET /static/css/index.css?v=72bb80d608cc37bc10fc150cea454a37 (120.236.174.155) 0.71ms
+[I 160723 15:39:06 web:1971] 304 GET /static/css/weui.css?v=3aadae9fd8645549f33998bee395f71d (120.236.174.155) 1.18ms
+[I 160723 15:39:07 web:1971] 304 GET /static/images/welfare.png?v=7cdd329ece0f9a05db4212ffb9e74c5f (120.236.174.155) 1.12ms
+[I 160723 15:39:07 web:1971] 304 GET /static/images/lecture.png?v=9cada4270531e2f7d4d7544e6dc94af1 (120.236.174.155) 0.65ms
+[I 160723 15:39:07 web:1971] 304 GET /static/images/game.png?v=9b50afc4db3f4a0ae7104d343071e69e (120.236.174.155) 0.73ms
+[I 160723 15:39:07 web:1971] 304 GET /static/images/PE.png?v=14328c64f61b6761aaad02223006ab46 (120.236.174.155) 0.63ms
+[I 160723 15:44:01 web:1971] 200 GET /collection?Title=welfare (120.236.174.155) 8.97ms
+[I 160723 15:44:01 web:1971] 200 GET /static/images/logo.jpg?v=855fb1e718b6612f56d2ce7d2ebd5f8f (120.236.174.155) 1.24ms
+[I 160723 15:44:01 web:1971] 200 GET /static/images/qrcode.png?v=fa0453ea215a33f27b192ac5bf129750 (120.236.174.155) 1.12ms
