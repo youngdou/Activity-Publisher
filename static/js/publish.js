@@ -156,7 +156,13 @@ function showSuccess(selector) {
 	$(selector+"_showTips span").hide();
 	$(selector+"_showTips").fadeIn(150);
 }
-function showFaild(selector, warnTipsText="字数有点多哦") {
+function showFaild(selector) {
+	if (arguments.length == 2) {
+		var warnTipsText = arguments[1];
+	} else {
+		var warnTipsText="字数有点多哦";
+	}
+	
 	$(selector+"_showTips .warningTips").text(warnTipsText);
 	$(selector+"_showTips i").attr("class", "weui_icon_warn");
 	$(selector+"_showTips").fadeIn(150);
