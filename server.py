@@ -38,7 +38,6 @@ class PublishHandler(BaseHandler):
 
     def post(self):
         QRImageName = self.get_argument("QRImageName");
-        print QRImageName+"  QRImageName"
         actName = self.get_argument("actName")
         Title = self.get_argument("Title")
         actTime = self.get_argument("actTime")
@@ -110,7 +109,7 @@ class UploadImageHandler(BaseHandler):
             with open(filePath+"/"+fileName, 'wb') as f:
                 f.write(base64Data)
                 # post返回的数据
-                self.write(fileName)
+            self.write(fileName)
         except Exception:
             print "IO Error"
             # post返回上传错误的信息

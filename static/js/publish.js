@@ -40,7 +40,7 @@ function UpLoadImage() {
 	// 1024KB，也就是 1MB
 	var maxSize = 1024 * 1024;
 	// 图片最大宽度
-	var maxWidth = 300;
+	var maxWidth = 600;
 	// 最大上传图片数量
 	var maxCount = 1;
 	$('.js_file').on('change', function (event) {
@@ -55,7 +55,7 @@ function UpLoadImage() {
 	        var reader = new FileReader();
 
 	        if (file.size > maxSize) {
-	            $.weui.alert({text: '图片太大，不允许上传'});
+	            $.toptip("图片大于1M", "error");
 	            continue;
 	        }
 
@@ -86,31 +86,55 @@ function UpLoadImage() {
 	                $('.js_counter').text(num + '/' + maxCount);
 
 	                // 然后假装在上传，可以post base64格式，也可以构造blob对象上传，也可以用微信JSSDK上传
-	                var test_resule = "";
+	                var test_result = "nerver_back";
 	                var test_status = "success";
 	                $.post("/uploadImage", {base64Image: base64}, function(result, status) {
 	                  console.log("result: "+result+"\nstatus: "+status);
-	                  test_resule = result;
-	                  test_status =status;
+	                  //result返回值说明：
+	                  //图片成功存储在后台，则返回图片的文件名xxx_x.png
+	                  //图片写入有误则返回字符串 UploadError
+
+	                  // test_result的存在是为了保存返回值到函数外部以便使用
+	                  // test_result 初始为nerver_back 用于判断是否在回调中返回了值
+	                  test_result = result;
+	                  test_status = status;
 	                })
 	                var progress = 0;
 	                function uploading() {
-	                    $preview.find('.weui_uploader_status_content').text(++progress + '%');
-	                    if (progress < 100 && test_resule != "UploadError" && test_status == "success") {
-	                        setTimeout(uploading, 30);
-	                    }
-	                    else {
-	                        // 如果是失败，塞一个失败图标
-	                        $preview.find('.weui_uploader_status_content').html('<i class="weui_icon_warn"></i>');
-	                        $preview.removeClass('weui_uploader_status').find('.weui_uploader_status_content').remove();
-	                    }
+	                	//忙等待，阻塞，等待post返回值
+	                	for (var i = 0; test_result == "nerver_back" && i < 20000; i++) {
+	                		console.log("wait...");
+	                	}
+
+	                	$preview.find('.weui_uploader_status_content').text("压缩\n"+ (++progress) + '%');
+	                	if (progress < 100 && test_result != "UploadError" && test_status == "success") {
+	                	    setTimeout(uploading, 30);
+	                	}
+	                	else if (test_result == "UploadError" || test_status != "success") {
+	                	    // 如果是失败，塞一个失败图标
+	                	    $preview.find('.weui_uploader_status_content').html('<i class="weui_icon_warn"></i>');
+
+	                	    $.toptip('图片上传失败', 'error');
+	                	    setTimeout(function() {
+	                	    	$("weui_uploader_file").hide(1000);
+	                	    	$('.weui_uploader_files').remove();	    
+	                	    }, 1200);
+	                	} else {
+	                		$preview.removeClass('weui_uploader_status').find('.weui_uploader_status_content').remove();
+	                	}
+	                	//
+	                	if (test_result != "UploadError" && test_status == "success") {
+	                		$(".weui_uploader_input_wrp").hide();
+
+	                		// 将图片文件名嵌入表单中，方便上传
+	                		var $ImageForm = $("<input  id=\"QRImageName\" name=\"QRImageName\" "+ "value ="+test_result+" type=\"text\">");
+	                		$("#actDetail").append($ImageForm);
+
+	                		$.toptip("图片上传成功", "success");
+	                	}
 	                }
 	                setTimeout(uploading, 30);
-	                if (test_resule != "UploadError" && test_status == "success") {
-	                	$(".weui_uploader_input_wrp").hide();
-	                	var $ImageForm = $("<input  id=\"QRImageName\" name=\"QRImageName\" "+ "value ="+test_resule+" type=\"text\">");
-	                	$("#actDetail").append($ImageForm);
-	                }
+
 	            }
 	            img.src = e.target.result;
 	        }
