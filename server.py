@@ -9,10 +9,12 @@ import os.path
 import torndb
 import MySQLdb
 import subprocess
+import base64
+import time
 
 from tornado.options import define, options
 
-define("port", default=80, help="run on the given port", type=int)
+define("port", default=8001, help="run on the given port", type=int)
 define("mysql_host", default="127.0.0.1:3306", help="database host")
 define("mysql_database", default="Activity", help="database name")
 define("mysql_user", default="root", help="database user")
@@ -35,6 +37,8 @@ class PublishHandler(BaseHandler):
         self.render("publish.html", Title=title)
 
     def post(self):
+        QRImageName = self.get_argument("QRImageName");
+        print QRImageName+"  QRImageName"
         actName = self.get_argument("actName")
         Title = self.get_argument("Title")
         actTime = self.get_argument("actTime")
@@ -83,6 +87,43 @@ class ManageHandler(BaseHandler):
     def get(self):
         self.render("manage.html")
 
+class TestImageHandler(BaseHandler):
+    def get(self):
+        self.render("test.html")
+
+class UploadImageHandler(BaseHandler):
+    def post(self):
+        base64DataUrlData = self.get_argument("base64Image")
+        # 将base64的url_data形式转换为base64data
+        base64Data = base64.b64decode((base64DataUrlData.split(","))[1]) 
+        fileName = getId()+".png"
+        # 获取上层目录
+        filePath = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))+"/ImageBase"
+        # 判断上层目录是否存在ImageBase目录
+        isImageBasePathExist = os.path.exists(filePath)
+        # 如果不存在就创建
+        if not isImageBasePathExist:
+            os.mkdir(os.path.join(os.pardir, "ImageBase"))
+            print "creat a file(ImageBase) to save image"
+
+        try:
+            with open(filePath+"/"+fileName, 'wb') as f:
+                f.write(base64Data)
+                # post返回的数据
+                self.write(fileName)
+        except Exception:
+            print "IO Error"
+            # post返回上传错误的信息
+            self.write("UploadError")
+
+
+def getId():
+    timeStr = str(time.time())
+    time2form = timeStr.split(".")[0]+"_"+timeStr.split(".")[1]
+    return time2form
+        
+
+
 class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
@@ -90,7 +131,9 @@ class Application(tornado.web.Application):
             (r"/publish", PublishHandler),
             (r"/success-publish", SuccessPubHandler),
             (r"/collection", ShowCollectionHandler),
-            (r"/manage", ManageHandler)
+            (r"/manage", ManageHandler),
+            (r"/testImage", TestImageHandler),
+            (r"/uploadImage", UploadImageHandler)
         ]
         settings = dict(
             template_path=os.path.join(os.path.dirname(__file__), "templates"),
