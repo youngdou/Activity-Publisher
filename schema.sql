@@ -14,9 +14,11 @@ CREATE TABLE activity (
     actJoin     VARCHAR(200)  NOT NULL,
     actDDL      VARCHAR(16)   NOT NULL,
     actDetail   VARCHAR(200)  NOT NULL,
+    QRImageName     VARCHAR(17)   NOT NULL,
 
     PEChapter   VARCHAR(30),
     welTime     VARCHAR(30),
     other       VARCHAR(30),
     actDem      VARCHAR(30)   
+
 );

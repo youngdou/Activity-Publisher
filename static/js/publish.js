@@ -146,7 +146,7 @@ function UpLoadImage() {
 // 检查字数函数
 // argument: selector <string>; numOfWords <interge>
 // return:null <null>
-function checkCounter(selector, numOfWords) {
+function checkCounter(selector, numOfWords, optional) {
 	var text = $(selector).val();
 	var len = text.length;
 	$(selector+"_counter").text(len+"");
@@ -163,7 +163,12 @@ function checkCounter(selector, numOfWords) {
 		isCheckPass[selector] = true;
 		$(selector+"_showTips").fadeOut();
 	} else {
-		isCheckPass[selector] = false;
+		//len == 0
+		if (optional) {
+			isCheckPass[selector] = true;
+		} else {
+			isCheckPass[selector] = false;
+		}
 	}
 }
 
@@ -183,9 +188,22 @@ function checkNeceValid() {
 		checkEmpty();
         $.toptip('格式好像有错/漏ఠ_ఠ', 'error');
 	} else {
-		//发布信息
-		$.showLoading("发布中");
-		$("#Actform").submit();
+		//先检查活动名称是否重复
+		$.post("/checkActName", {actName: $("#actName").val()}, function(result, status) {
+			//当数据库中 *不存在* 这个活动名称时
+			//result = no_exist
+			//否则
+			//result = exist
+			if (status == "success" && result == "no_exist") {
+				//发布信息
+				$.showLoading("发布中");
+				$("#Actform").submit();
+			} else {
+				//
+				$.toptip("活动名称和别人重复啦~", 'error');
+				return;
+			}
+		})
 	}
 }
 function checkCounterOk(selector) {
@@ -194,6 +212,7 @@ function checkCounterOk(selector) {
 	} else {
 		$(selector+"_showTips").hide();
 	}
+
 }
 
 function checkMutiItem(numOfWords) {
@@ -226,27 +245,33 @@ function bindCheck() {
 		"#actDem" 		: 	100
 	}
 
-	//绑定 字数函数
+	//绑定 检测函数
 	for (var key in options) {
 		bindCheckOne(key, options[key]);
 	}
-	//绑定 活动奖励
-	CheckActReward();
-	//绑定 截止时间
+	//截止时间
 	$("#actDDL").click(function() {
-		checkCounter("#actDDL", 16);
+		checkCounter("#actDDL", 16, false);
 		checkCounterOk("#actDDL");
-		console.log("#actDDL" + 16);
 	});
+
+	//活动奖励
+	CheckActReward();
+
 	//绑定 发布内容
 	$(document).on('click', '#public_button', function() {
         checkNeceValid();
     });
 }
-
 function bindCheckOne(selector, numOfWords) {
+	//默认为必选项
+	var optional = false;
+	//设置可选项
+	if (selector == "#actDem") {
+		optional = true;
+	}
 	$(selector).keyup(function() {
-		checkCounter(selector, numOfWords);
+		checkCounter(selector, numOfWords, optional);
 	});
 	$(selector).blur(function() {
 		checkCounterOk(selector);
@@ -264,7 +289,7 @@ function CheckActReward() {
 }
 function checkOneReward(selector, numOfWords) {
 	$(selector).keyup(function() {
-		checkCounter(selector, numOfWords);
+		checkCounter(selector, numOfWords, true);
 	});
 	$(selector).blur(function() {
 		checkMutiItem(numOfWords);

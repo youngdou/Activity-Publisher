@@ -37,7 +37,10 @@ class PublishHandler(BaseHandler):
         self.render("publish.html", Title=title)
 
     def post(self):
-        QRImageName = self.get_argument("QRImageName");
+        try:
+            QRImageName = self.get_argument("QRImageName");
+        except Exception:
+            QRImageName = "no_image"
         actName = self.get_argument("actName")
         Title = self.get_argument("Title")
         actTime = self.get_argument("actTime")
@@ -56,9 +59,9 @@ class PublishHandler(BaseHandler):
         print "Time: "+actTime+" Name: "+actName+" Title: "+Title
         try:
             self.db.execute(
-                "INSERT INTO activity (actName,actType,actTime,actLoc,actIntru,actFor,actPub,actJoin,actDDL,actDetail,PEChapter,welTime,other,actDem)"
-                "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
-                actName,Title,actTime,actLoc,actIntru,actFor,actPub,actJoin,actDDL,actDetail,PEChapter,welTime,other,actDem)
+                "INSERT INTO activity (actName,actType,actTime,actLoc,actIntru,actFor,actPub,actJoin,actDDL,actDetail,QRImageName,PEChapter,welTime,other,actDem)"
+                "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+                actName,Title,actTime,actLoc,actIntru,actFor,actPub,actJoin,actDDL,actDetail,QRImageName,PEChapter,welTime,other,actDem)
         except MySQLdb.ProgrammingError:
             print "request is not allowed"
 
@@ -75,8 +78,7 @@ class ShowCollectionHandler(BaseHandler):
             self.write("请查询相应类型的活动\n")
             return
 
-
-        activity = self.db.query("SELECT * FROM activity WHERE actType = %s;", actType)
+        activity = self.db.query("SELECT * FROM activity WHERE actType = %s ORDER BY actDDL;", actType)
         if not activity:
             self.write("暂时还没有此类型的活动")
             return
@@ -121,7 +123,47 @@ def getId():
     time2form = timeStr.split(".")[0]+"_"+timeStr.split(".")[1]
     return time2form
         
+class ResposeImageHandeler(BaseHandler):
+    def get(self, ImageName):
+        print "\n\nhaha\n\n"
+        print ImageName
+        fileName = ImageName
+        # 获取上层目录
+        filePath = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))+"/ImageBase"
+        # 判断上层目录是否存在ImageBase目录
+        isImageBasePathExist = os.path.exists(filePath)
+        if not isImageBasePathExist:
+            return
 
+        self.set_header("content-Type", "image/png")
+        self.set_header ('Content-Disposition', 'attachment; filename='+fileName)
+        with open(filePath+"/"+fileName, "rb") as f:
+            while True:
+                data = f.read(100)
+                if not data:
+                    break;
+                self.write(data)
+        self.finish()
+
+class CheckActNameHandler(BaseHandler):
+    def post(self):
+        actName = self.get_argument("actName")
+        print actName
+        activity = self.db.query("SELECT * FROM activity WHERE actName = %s;", actName)
+        if not activity:
+            self.write("no_exist")
+        else:
+            self.write("exist")
+
+class Error_PageHandler(BaseHandler):
+    def get(self):
+        self.write_error(404)
+
+    def write_error(self, status_code):
+        if status_code == 404:
+            self.render("error_404.html")
+        else:
+            self.write("Error: "+str(status_code))
 
 class Application(tornado.web.Application):
     def __init__(self):
@@ -132,7 +174,11 @@ class Application(tornado.web.Application):
             (r"/collection", ShowCollectionHandler),
             (r"/manage", ManageHandler),
             (r"/testImage", TestImageHandler),
-            (r"/uploadImage", UploadImageHandler)
+            (r"/uploadImage", UploadImageHandler),
+            (r"/ImageBase/(\d*_\d*\.png)", ResposeImageHandeler),
+            (r"/checkActName", CheckActNameHandler),
+            # 捕获错误路径
+            (r".*", Error_PageHandler)
         ]
         settings = dict(
             template_path=os.path.join(os.path.dirname(__file__), "templates"),
@@ -165,7 +211,9 @@ class Application(tornado.web.Application):
 
 class activityItemModule(tornado.web.UIModule):
     def render(self, activity, index):
-        return self.render_string("modules/activityItem.html", activity=activity, index=index)
+        return self.render_string("modules/activityItem.html",
+                                    activity=activity,
+                                    index=index)
 
 class footerModule(tornado.web.UIModule):
     def render(self):
