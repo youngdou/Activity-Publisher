@@ -123,7 +123,7 @@ function UpLoadImage() {
 	                		$preview.removeClass('weui_uploader_status').find('.weui_uploader_status_content').remove();
 	                	}
 	                	//
-	                	if (test_result != "UploadError" && test_status == "success") {
+	                	if (test_result != "UploadError" && test_status == "success" && progress==100) {
 	                		$(".weui_uploader_input_wrp").hide();
 
 	                		// 将图片文件名嵌入表单中，方便上传
