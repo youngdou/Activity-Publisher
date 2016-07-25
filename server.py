@@ -156,14 +156,12 @@ class CheckActNameHandler(BaseHandler):
             self.write("exist")
 
 class Error_PageHandler(BaseHandler):
-    def get(self):
+    def get(self, rep):
         self.write_error(404)
 
-    def write_error(self, status_code):
-        if status_code == 404:
-            self.render("error_404.html")
-        else:
-            self.write("Error: "+str(status_code))
+    def write_error(self, status_code, **keywd):
+        # 不管404 500，一致用一个页面
+        self.render("error_404.html")
 
 class Application(tornado.web.Application):
     def __init__(self):
@@ -178,7 +176,7 @@ class Application(tornado.web.Application):
             (r"/ImageBase/(\d*_\d*\.png)", ResposeImageHandeler),
             (r"/checkActName", CheckActNameHandler),
             # 捕获错误路径
-            (r".*", Error_PageHandler)
+            (r"/(.*)", Error_PageHandler)
         ]
         settings = dict(
             template_path=os.path.join(os.path.dirname(__file__), "templates"),
