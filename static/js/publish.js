@@ -16,14 +16,26 @@ $(document).ready(function() {
 
 	//initial the time picker
 	$("#actDDL").datetimePicker({
-	  min: "2012-12-12",
+	  min: theDate(),
 	  max: "2022-12-12 12:12",
 	});
 
 	//绑定检验函数
 	bindCheck();
 	UpLoadImage();
-})
+});
+
+function theDate() {
+	var timeStr = "";
+	var Today = new Date();
+	timeStr = Today.getFullYear()+"-"+
+				(Today.getMonth()+1)+"-"+
+				(Today.getDate()) + " "+
+				(Today.getHours()) + ":"+
+				(Today.getMinutes());
+
+	return timeStr;
+}
 
 function UpLoadImage() {
 	$.weui = {};
@@ -207,9 +219,10 @@ function checkNeceValid() {
 	}
 }
 function checkCounterOk(selector) {
-	if (isCheckPass[selector] == true ) {
+	if (isCheckPass[selector] == true && $(selector).val().length != 0) {
 		showSuccess(selector);
-	} else {
+	}
+	else if (isCheckPass[selector] == true) {
 		$(selector+"_showTips").hide();
 	}
 
@@ -314,8 +327,11 @@ function showFaild(selector) {
 }
 function checkEmpty() {
 	for (var key in isCheckPass) {
-		if (isCheckPass[key] == false && key !== "#actReward" && key != "#actDem") {
-			showFaild(key, "艾玛，还没填呢");
+		if (isCheckPass[key] == false 
+			&& key !== "#actReward" 
+			&& key != "#actDem"
+			&& $(key).val().length == 0) {
+			showFaild(key, "请输入相关内容");
 		}
 	}
 }

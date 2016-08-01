@@ -19,6 +19,6 @@ CREATE TABLE activity (
     PEChapter   VARCHAR(30),
     welTime     VARCHAR(30),
     other       VARCHAR(30),
-    actDem      VARCHAR(30)   
+    actDem      VARCHAR(100)   
 
 );

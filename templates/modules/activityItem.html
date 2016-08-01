@@ -63,12 +63,14 @@
 
                 <p style="font-size: 1em; text-align: left;">
                     <span style=" line-height: 28px;"><strong style="line-height: 25.6px;"><span style="line-height: 23.4px;"><strong>活动详情：</strong></span></strong></span><span style=" line-height: 25.6px;">{{ activity.actDetail }}</span>
+                    <br>
                     {% if activity.QRImageName != "no_image" %}
-                            <img src="/ImageBase/{{ activity.QRImageName }}" style="height:160px;text-align:center;">
+                    <p style="margin-bottom:-20px">
+                        <img src="/ImageBase/{{ activity.QRImageName }}" style="height:160px;text-align:center;">
+                    </p>
                     {% end %}
                 </p>
             </section>
-
 
         </section>
     </section>

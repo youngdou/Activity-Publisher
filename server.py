@@ -14,7 +14,7 @@ import time
 
 from tornado.options import define, options
 
-define("port", default=80, help="run on the given port", type=int)
+define("port", default=8888, help="run on the given port", type=int)
 define("mysql_host", default="127.0.0.1:3306", help="database host")
 define("mysql_database", default="Activity", help="database name")
 define("mysql_user", default="root", help="database user")
@@ -25,6 +25,8 @@ class BaseHandler(tornado.web.RequestHandler):
     @property
     def db(self):
         return self.application.db
+    def get_current_user(self):
+        return self.get_secure_cookie("username")
 
 
 class IndexHandler(BaseHandler):
@@ -33,8 +35,10 @@ class IndexHandler(BaseHandler):
 
 class PublishHandler(BaseHandler):
     def get(self):
+        titleMap = {"welfare":u"公益", "PE":u"体育", "game":u"比赛", "lecture":u"讲座", "unSelected":u""}
         title = self.get_query_argument("Title", "unSelected")
-        self.render("publish.html", Title=title)
+        MainTitle = titleMap[title]
+        self.render("publish.html", Title=title, MainTitle=MainTitle)
 
     def post(self):
         try:
@@ -72,12 +76,20 @@ class SuccessPubHandler(BaseHandler):
         self.render("publish-success.html")
     
 class ShowCollectionHandler(BaseHandler):
+    @tornado.web.authenticated
     def get(self):
         actType = self.get_query_argument("Title", None)
         if not actType:
             self.write("请查询相应类型的活动\n")
             return
 
+        #首先删除过期的信息
+        # 现在的时间
+        ISOTIMEFORMAT = '%Y-%m-%d %H:%M'
+        LocalTime = time.strftime( ISOTIMEFORMAT, time.localtime())
+        print LocalTime
+        deleted = self.db.execute("DELETE FROM activity WHERE actDDL <= %s", LocalTime)
+        # 查找出所需的信息
         activity = self.db.query("SELECT * FROM activity WHERE actType = %s ORDER BY actDDL;", actType)
         if not activity:
             self.write("暂时还没有此类型的活动")
@@ -85,6 +97,7 @@ class ShowCollectionHandler(BaseHandler):
         self.render("collection.html", activity=activity)
 
 class ManageHandler(BaseHandler):
+    @tornado.web.authenticated
     def get(self):
         self.render("manage.html")
 
@@ -155,6 +168,20 @@ class CheckActNameHandler(BaseHandler):
         else:
             self.write("exist")
 
+class LoginHandler(BaseHandler):
+    def get(self):
+        self.render('login.html')
+
+    def post(self):
+        self.set_secure_cookie("username", self.get_argument("username"))
+        self.redirect("/manage")
+
+class LogoutHandler(BaseHandler):
+    def get(self):
+        if (self.get_secure_cookie("username")):
+            self.clear_cookie("username")
+            self.redirect(r"/manage/login")
+
 class Error_PageHandler(BaseHandler):
     def get(self, rep):
         self.write_error(404)
@@ -175,6 +202,8 @@ class Application(tornado.web.Application):
             (r"/uploadImage", UploadImageHandler),
             (r"/ImageBase/(\d*_\d*\.png)", ResposeImageHandeler),
             (r"/checkActName", CheckActNameHandler),
+            (r"/manage/login", LoginHandler),
+            (r"/manage/logout", LogoutHandler),
             # 捕获错误路径
             (r"/(.*)", Error_PageHandler)
         ]
@@ -184,7 +213,9 @@ class Application(tornado.web.Application):
             ui_modules={"ActItem": activityItemModule,
                         "Header": headerModules,
                         "Footer": footerModule},
+            login_url="/manage/login",
             debug=True,
+            cookie_secret="2jIuGE32TVmSeZe9a4yep9elQB7NWk5Pmyvn0VKfHPk="
         )
         super(Application, self).__init__(handlers, **settings)
 
