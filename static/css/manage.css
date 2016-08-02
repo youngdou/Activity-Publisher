@@ -12,7 +12,7 @@ body {
 	height: 100%;
 	background-image: url(../images/sysu1.jpg);
 	background-repeat: no-repeat;
-	background-size: cover;
+
 }
 
 .header {
@@ -21,6 +21,16 @@ body {
  	height: 30%;
 	width: 100%;
 	text-align: center;
+}
+.header a {
+	position: fixed;
+    right: 2%;
+    top: 2%;
+    border: 1px solid #b42760;
+    border-radius: 5px;
+    padding: 3px 12px;
+    text-decoration: none;
+    color: #b02727;
 }
 .body{
 	min-height: 80%;
@@ -35,7 +45,7 @@ body {
 	bottom: 0;
 	color: white;
 }
-a {
+.body a {
 	width: 100px;
 	height: 50px;
 	margin: 30px;

@@ -173,8 +173,17 @@ class LoginHandler(BaseHandler):
         self.render('login.html')
 
     def post(self):
-        self.set_secure_cookie("username", self.get_argument("username"))
-        self.redirect("/manage")
+        # 检查是否管理员账号/密码
+        username = self.get_argument("username")
+        password = self.get_argument("password")
+        if username != "sysuact":
+            self.write("error_username")
+        elif password != "sysuact":
+            self.write("error_password")
+        else:
+            self.set_secure_cookie("username", username)
+            self.redirect("/manage")
+
 
 class LogoutHandler(BaseHandler):
     def get(self):
