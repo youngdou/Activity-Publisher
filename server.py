@@ -11,7 +11,10 @@ import MySQLdb
 import subprocess
 import base64
 import time
+import sys
 
+reload(sys)
+sys.setdefaultencoding('utf8') 
 from tornado.options import define, options
 
 define("port", default=8888, help="run on the given port", type=int)
@@ -198,6 +201,7 @@ class Error_PageHandler(BaseHandler):
     def write_error(self, status_code, **keywd):
         # 不管404 500，一致用一个页面
         self.render("error_404.html")
+
 
 class Application(tornado.web.Application):
     def __init__(self):

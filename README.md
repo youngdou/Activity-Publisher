@@ -37,11 +37,21 @@ pip install torndb
 
 ## 安装Mysql-Python数据库驱动
 
+``
+1. 问题1
+
 - 出现错误： `fatal error: Python.h: No such file or directory`
 
 - 原因：没有安装python开发包
 
-- 解决:：`apt-get install Python-dev`
+- 解决:：`apt-get install python-dev`
+
+2.问题2
+
+- 出现错误`EnvironmentError: mysql_config not found`
+
+- 解决:：`sudo apt-get install libmysqlclient-dev`
+
 
 ## 创建数据库
 
