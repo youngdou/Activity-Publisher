@@ -35,7 +35,7 @@ class IndexHandler(BaseHandler):
 
 class PublishHandler(BaseHandler):
     def get(self):
-        titleMap = {"welfare":u"公益", "PE":u"体育", "game":u"比赛", "lecture":u"讲座", "unSelected":u""}
+        titleMap = {"welfare":u"公益活动", "PE":u"体育活动", "game":u"比赛信息", "lecture":u"讲座信息", "unSelected":u""}
         title = self.get_query_argument("Title", "unSelected")
         MainTitle = titleMap[title]
         self.render("publish.html", Title=title, MainTitle=MainTitle)

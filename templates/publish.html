@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-        <title>发布{{ MainTitle }}活动</title>
+        <title>发布{{ MainTitle }}</title>
         <!-- 引入 WeUI -->
         <link rel="stylesheet" href="{{ static_url("css/weui.css") }}"/>
         <link rel="stylesheet" href="{{ static_url("css/publish.css") }}" />
@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="header">
-            <div><img src="{{ static_url("images/publish.png") }}"><h1>发布{{ MainTitle }}活动</h1></div>
+            <div><img src="{{ static_url("images/publish.png") }}"><h1>发布{{ MainTitle }}</h1></div>
             <p class="tips">在这里，把你的活动告诉中大人</p>
         </div>
         <form id="Actform" action="/publish?Title={{ Title }}" method="post">
