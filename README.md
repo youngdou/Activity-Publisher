@@ -1,5 +1,7 @@
-# Activity-Publisher-for-WeChat
+# Activity-Publisher
 
+
+> This is a webapp for publish activity online
 > Author: YoungDou
 
 ## 技术架构：
@@ -11,7 +13,6 @@
 ### 后端
 - `python/Tornado`
 - `MySQL`
-
 
 
 ---
