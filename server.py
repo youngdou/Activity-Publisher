@@ -17,11 +17,11 @@ reload(sys)
 sys.setdefaultencoding('utf8') 
 from tornado.options import define, options
 
-define("port", default=8888, help="run on the given port", type=int)
+define("port", default=80, help="run on the given port", type=int)
 define("mysql_host", default="127.0.0.1:3306", help="database host")
 define("mysql_database", default="Activity", help="database name")
 define("mysql_user", default="root", help="database user")
-define("mysql_password", default="password", help="database password")
+define("mysql_password", default="activity2016sysu", help="database password")
 
 
 class BaseHandler(tornado.web.RequestHandler):
