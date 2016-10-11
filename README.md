@@ -104,3 +104,4 @@ warnings.warn(msg, UserWarning)
 
 1. 数据库信息
 2. ImageBase文件夹及它下面的图片文件
+3. ActServerLog文件夹，里面的每个日志文件每日一更
