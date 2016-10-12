@@ -10,7 +10,6 @@ import torndb
 import MySQLdb
 import subprocess
 import base64
-import time
 import sys
 
 # custom module
