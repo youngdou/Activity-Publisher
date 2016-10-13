@@ -3,6 +3,9 @@ import tornado.options
 import tornado.httpserver
 import tornado.ioloop
 import tornado.web
+import time
+import os
+import base64
 
 
 class BaseHandler(tornado.web.RequestHandler):
@@ -94,7 +97,7 @@ class UploadImageHandler(BaseHandler):
         base64Data = base64.b64decode((base64DataUrlData.split(","))[1]) 
         fileName = getId()+".png"
         # 获取上层目录
-        filePath = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))+"/ImageBase"
+        filePath = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, os.pardir))+"/ImageBase"
         # 判断上层目录是否存在ImageBase目录
         isImageBasePathExist = os.path.exists(filePath)
         # 如果不存在就创建
@@ -124,7 +127,7 @@ class ResposeImageHandeler(BaseHandler):
         print ImageName
         fileName = ImageName
         # 获取上层目录
-        filePath = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))+"/ImageBase"
+        filePath = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, os.pardir))+"/ImageBase"
         # 判断上层目录是否存在ImageBase目录
         isImageBasePathExist = os.path.exists(filePath)
         if not isImageBasePathExist:
