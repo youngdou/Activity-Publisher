@@ -7,9 +7,7 @@ var isCheckPass = {
 	"#actPub" 	: 	false,
 	"#actJoin" 	: 	false,
 	"#actDDL" 	: 	false,
-	"#actDetail": 	false,
-	"#actReward" : 	true,
-	"#actDem" 	: 	true
+	"#actDetail": 	false
 }
 
 $(document).ready(function() {
@@ -25,6 +23,7 @@ $(document).ready(function() {
 	UpLoadImage();
 });
 
+// 当前时间--活动截止如期不得提前于当前时间
 function theDate() {
 	var timeStr = "";
 	var Today = new Date();
@@ -158,12 +157,14 @@ function UpLoadImage() {
 // 检查字数函数
 // argument: selector <string>; numOfWords <interge>
 // return:null <null>
-function checkCounter(selector, numOfWords, optional) {
+function checkCounter(selector, numOfWords) {
+	// 当前文本框内的文字数量
 	var text = $(selector).val();
 	var len = text.length;
 	$(selector+"_counter").text(len+"");
 
-	if (len > numOfWords) {
+	// 字数已满，提醒用户
+	if (len == numOfWords) {
 		showFaild(selector);
 
 		$(selector).val($(selector).val().substring(0,numOfWords+1));
@@ -172,35 +173,34 @@ function checkCounter(selector, numOfWords, optional) {
 		isCheckPass[selector] = false;
 	} 
 	else if (len > 0) {
-		isCheckPass[selector] = true;
+		// 输入正确，隐藏警告信息
+		// isCheckPass[selector] = true;
 		$(selector+"_showTips").fadeOut();
-	} else {
+	}
+	else {
 		//len == 0
-		if (optional) {
-			isCheckPass[selector] = true;
-		} else {
-			isCheckPass[selector] = false;
-		}
 	}
 }
 
 function checkNeceValid() {
-	var validNum = 0;
+	// 9个必填项目
+	var validNum = 9;
+
 	var isCheckPassLength = 0;
 	for (var key in isCheckPass) {
-		if (isCheckPass[key]) {
-			validNum++;
+		if ($(key).val().length != 0) {
+			isCheckPassLength++;
 		}
-		isCheckPassLength++;
-		// console.log(key+" "+ "\tNum: "+validNum + "\tisPassLength: "+isCheckPassLength);
+
 	}
 
+	// 1. 先检查字数没问题
 	if (validNum != isCheckPassLength) {
 		//提示格式错误
 		checkEmpty();
-        $.toptip('格式好像有错/漏ఠ_ఠ', 'error');
+        $.toptip('输入格式有错/漏(` V`)', 'error');
 	} else {
-		//先检查活动名称是否重复
+	//2. 检查活动名称是否重复
 		$.post("/checkActName", {actName: $("#actName").val()}, function(result, status) {
 			//当数据库中 *不存在* 这个活动名称时
 			//result = no_exist
@@ -219,7 +219,7 @@ function checkNeceValid() {
 	}
 }
 function checkCounterOk(selector) {
-	if (isCheckPass[selector] == true && $(selector).val().length != 0) {
+	if ($(selector).val().length != 0) {
 		showSuccess(selector);
 	}
 	else if (isCheckPass[selector] == true) {
@@ -227,23 +227,7 @@ function checkCounterOk(selector) {
 	}
 
 }
-
-function checkMutiItem(numOfWords) {
-	var len_pe = $("#PEChapter").val().length;
-	var len_wel = $("#welTime").val().length;
-	var len_other = $("#other").val().length;
-
-	if ((len_other + len_wel + len_pe) == 0) {
-		$("#actReward_showTips").fadeOut(150);
-	} 
-	else if (len_pe > numOfWords || len_wel > numOfWords || len_other > numOfWords) {
-		isCheckPass["#actReward"] = false;
-		//show tips
-		showFaild("#actReward");
-	} else {
-		showSuccess("#actReward")
-	}
-}
+// 给相关的输入框绑定具体事件
 function bindCheck() {
 	//用json对象进行每个输入框的设置（字数长度设置）
 	var options = {
@@ -255,7 +239,6 @@ function bindCheck() {
 		"#actPub" 		: 	50,
 		"#actJoin" 		: 	200,
 		"#actDetail" 	: 	200,
-		"#actDem" 		: 	100
 	}
 
 	//绑定 检测函数
@@ -264,12 +247,9 @@ function bindCheck() {
 	}
 	//截止时间
 	$("#actDDL").click(function() {
-		checkCounter("#actDDL", 16, false);
+		checkCounter("#actDDL", 17);
 		checkCounterOk("#actDDL");
 	});
-
-	//活动奖励
-	CheckActReward();
 
 	//绑定 发布内容
 	$(document).on('click', '#public_button', function() {
@@ -277,37 +257,15 @@ function bindCheck() {
     });
 }
 function bindCheckOne(selector, numOfWords) {
-	//默认为必选项
-	var optional = false;
-	//设置可选项
-	if (selector == "#actDem") {
-		optional = true;
-	}
+
 	$(selector).keyup(function() {
-		checkCounter(selector, numOfWords, optional);
+		checkCounter(selector, numOfWords);
 	});
 	$(selector).blur(function() {
 		checkCounterOk(selector);
 	})
 }
-function CheckActReward() {
-	//体育章
-	checkOneReward("#PEChapter", 30);
 
-	//公益时
-	checkOneReward("#welTime", 30);
-
-	//其他奖励
-	checkOneReward("#other", 30);
-}
-function checkOneReward(selector, numOfWords) {
-	$(selector).keyup(function() {
-		checkCounter(selector, numOfWords, true);
-	});
-	$(selector).blur(function() {
-		checkMutiItem(numOfWords);
-	})
-}
 function showSuccess(selector) {
 	$(selector+"_showTips i").attr("class", "weui_icon_success");
 	$(selector+"_showTips span").hide();
@@ -317,9 +275,9 @@ function showFaild(selector) {
 	if (arguments.length == 2) {
 		var warnTipsText = arguments[1];
 	} else {
-		var warnTipsText="字数有点多哦";
+		var warnTipsText="字数已满";
 	}
-	
+	// 显示提醒框
 	$(selector+"_showTips .warningTips").text(warnTipsText);
 	$(selector+"_showTips i").attr("class", "weui_icon_warn");
 	$(selector+"_showTips").fadeIn(150);
@@ -327,17 +285,8 @@ function showFaild(selector) {
 }
 function checkEmpty() {
 	for (var key in isCheckPass) {
-		if (isCheckPass[key] == false 
-			&& key !== "#actReward" 
-			&& key != "#actDem"
-			&& $(key).val().length == 0) {
+		if ($(key).val().length == 0) {
 			showFaild(key, "请输入相关内容");
 		}
 	}
-}
-function getTitle() {
-	var url = window.location.href;
-	queryString = (url.split("?"))[1];
-	Title = (queryString.split("="))[1];
-	return Title;
 }

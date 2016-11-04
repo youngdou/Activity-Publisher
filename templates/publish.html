@@ -27,7 +27,7 @@
                 <div class="weui_cells weui_cells_form">
                     <div class="weui_cell">
                         <div class="weui_cell_bd weui_cell_primary">
-                            <input id="actName" name="actName" class="weui_input" type="text">
+                            <input id="actName" name="actName" class="weui_input" maxLength=“30” required="required" type="text">
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                 <div class="weui_cells weui_cells_form">
                     <div class="weui_cell">
                         <div class="weui_cell_bd weui_cell_primary">
-                            <textarea id="actTime" name="actTime" class="weui_textarea" placeholder="例：7月10日（星期日）9：00 - 11：00" rows="2"></textarea>
+                            <textarea maxlength="100" id="actTime" name="actTime" class="weui_textarea" placeholder="例：7月10日（星期日）9：00 - 11：00" rows="2"></textarea>
                                   <div class="weui_textarea_counter"><span id="actTime_counter">0</span>/100</div>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                 <div class="weui_cells weui_cells_form">
                     <div class="weui_cell">
                         <div class="weui_cell_bd weui_cell_primary">
-                            <textarea id="actLoc" name="actLoc" class="weui_textarea" placeholder="例：东校区篮球场" rows="2"></textarea>
+                            <textarea maxlength="100" id="actLoc" name="actLoc" class="weui_textarea" placeholder="例：东校区篮球场" rows="2"></textarea>
                                   <div class="weui_textarea_counter"><span id="actLoc_counter">0</span>/100</div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                 <div class="weui_cells weui_cells_form">
                     <div class="weui_cell">
                         <div class="weui_cell_bd weui_cell_primary">
-                            <textarea id="actIntru" name="actIntru" class="weui_textarea" placeholder="请在此概括活动内容" rows="2"></textarea>
+                            <textarea maxlength="50" id="actIntru" name="actIntru" class="weui_textarea" placeholder="请在此概括活动内容" rows="2"></textarea>
                                   <div class="weui_textarea_counter"><span  id="actIntru_counter">0</span>/50</div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                 <div class="weui_cells weui_cells_form">
                     <div class="weui_cell">
                         <div class="weui_cell_bd weui_cell_primary">
-                            <textarea id="actFor" name="actFor" class="weui_textarea" placeholder="例：东校区全体在校生" rows="2"></textarea>
+                            <textarea maxlength="30" id="actFor" name="actFor" class="weui_textarea" placeholder="例：东校区全体在校生" rows="2"></textarea>
                                   <div class="weui_textarea_counter"><span id="actFor_counter">0</span>/30</div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                 <div class="weui_cells weui_cells_form">
                     <div class="weui_cell">
                         <div class="weui_cell_bd weui_cell_primary">
-                            <textarea id="actPub" name="actPub" class="weui_textarea" placeholder="请填写活动主办方全称" rows="2"></textarea>
+                            <textarea maxlength="50" id="actPub" name="actPub" class="weui_textarea" placeholder="请填写活动主办方全称" rows="2"></textarea>
                                   <div class="weui_textarea_counter"><span id="actPub_counter">0</span>/50</div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                 <div class="weui_cells weui_cells_form">
                     <div class="weui_cell">
                         <div class="weui_cell_bd weui_cell_primary">
-                            <textarea id="actJoin" name="actJoin" class="weui_textarea" placeholder="请用文字描述活动的报名方式，例如公众号名称、QQ群号、活动官网、线下报名时间地点等" rows="3"></textarea>
+                            <textarea maxlength="200" id="actJoin" name="actJoin" class="weui_textarea" placeholder="请用文字描述活动的报名方式，例如公众号名称、QQ群号、活动官网、线下报名时间地点等" rows="3"></textarea>
                                   <div class="weui_textarea_counter"><span id="actJoin_counter">0</span>/200</div>
                         </div>
                     </div>
@@ -117,7 +117,7 @@
                 <div class="weui_cells weui_cells_form">
                     <div class="weui_cell">
                         <div class="weui_cell_bd weui_cell_primary">
-                            <input class="weui_input" id="actDDL" name="actDDL" type="text">
+                            <input maxLength="17" class="weui_input" id="actDDL" name="actDDL" type="text">
                             
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                         <div class="weui_cell_bd weui_cell_primary">
                             <div class="weui_uploader">
                                 <div class="weui_uploader_hd weui_cell">
-                                    <textarea id="actDetail" name="actDetail" class="weui_textarea" placeholder="使用文字或者二维码图片描述何处可获取活动详情，点击下方加号添加图片(只限一张图片,大小1M以内)推荐使用二维码" rows="3"></textarea>
+                                    <textarea maxlength="200" id="actDetail" name="actDetail" class="weui_textarea" placeholder="使用文字或者二维码图片描述何处可获取活动详情，点击下方加号添加图片(只限一张图片,大小1M以内)推荐使用二维码" rows="3"></textarea>
 
                                 </div>
                                 <div class="weui_uploader_bd">
@@ -159,7 +159,7 @@
                             <label class="weui_label" for="PEChapter">体育章</label>
                         </div>
                         <div class="weui_cell_bd weui_cell_primary" >
-                            <input id="PEChapter" name="PEChapter" class="weui_input" type="text" placeholder="例：5个">
+                            <input maxLength="30" id="PEChapter" name="PEChapter" class="weui_input" type="text" placeholder="例：5个">
                         </div>
                     </div>
 
@@ -168,7 +168,7 @@
                             <label class="weui_label" for="welTime">公益时</label>
                         </div>
                         <div class="weui_cell_bd weui_cell_primary">
-                            <input class="weui_input" name="welTime" id="welTime" type="text" placeholder="例：10个">
+                            <input maxLength="30" class="weui_input" name="welTime" id="welTime" type="text" placeholder="例：10个">
                         </div>
                     </div>
 
@@ -177,7 +177,7 @@
                             <label class="weui_label" for="other">其他</label>
                         </div>
                         <div class="weui_cell_bd weui_cell_primary">
-                            <input class="weui_input" id="other" name="other" type="text" placeholder="例：奖金2000元">
+                            <input maxLength="30" class="weui_input" id="other" name="other" type="text" placeholder="例：奖金2000元">
                         </div>
                     </div>
                 </div>
@@ -187,7 +187,7 @@
                 <div class="weui_cells weui_cells_form">
                     <div class="weui_cell">
                         <div class="weui_cell_bd weui_cell_primary">
-                            <textarea id="actDem" name="actDem" class="weui_textarea" placeholder="请填写活动的特殊要求" rows="3"></textarea>
+                            <textarea maxlength="100" id="actDem" name="actDem" class="weui_textarea" placeholder="请填写活动的特殊要求" rows="3"></textarea>
                                   <div class="weui_textarea_counter"><span id="actDem_counter">0</span>/100</div>
                         </div>
                     </div>
