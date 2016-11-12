@@ -1,80 +1,84 @@
-<section class="" data-id="85951" data-color="#062D92" data-custom="#062D92" style="border: 0px none;">
-    <section style="margin-top: 1em; margin-bottom: 0.5em;">
-        <section style="margin-left: 1.3em; padding: 10px; border: 2px solid rgb(6, 45, 146); text-align: center;border-radius:5px;">
-          <!-- 序号 -->
-            <section style="margin-top: -1.3em; margin-left: -1.3em; padding: 5px; font-size: 1.5em; border-radius: 50%; width: 2em; height: 2em; display: inline-block; float: left; vertical-align: top; color: rgb(255, 255, 255); background-color: rgb(6, 45, 146);">
-                <section class="" data-original-title="" title="" style="color: inherit;">
-                    {{ index }}
-                </section>
-            </section>
+<section style="margin-top: 20px; padding-right: 5px; padding-left: 5px; line-height: 10px; border: 1px solid rgb(30, 155, 232); margin-bottom: -10px; box-sizing: border-box; text-align: center;margin-bottom: 70px;">
+	<section style="color: inherit; padding: 0px; font-size: 16px; height: 8px; margin: -5px 0px 0px 40%; width: 20%; text-align: center; box-sizing: border-box; background-color: rgb(254, 254, 254);">
+		<section style="width: 8px; height: 8px; border-radius: 100%; line-height: 1; font-size: 18px; text-decoration: inherit; border-color: rgb(30, 155, 232); display: inline-block; color: rgb(255, 255, 255); float: left; box-sizing: border-box; background-color: rgb(30, 155, 232);"></section>
+		<section style="width: 2.5em;height: 2.5em;border-radius: 50%;display: inline-block;line-height: 40px;margin-top: -15px;color: rgb(255, 255, 255);border-color: rgb(30, 155, 232);box-sizing: border-box;background-color: rgb(30, 155, 232);text-align: center;">
+			<strong class="autonum" style="color:inherit" data-original-title="" title=""> {{ index }}</strong>
+		</section>
+		<section style="width: 8px; height: 8px; border-radius: 100%; line-height: 1; font-size: 18px; text-decoration: inherit; border-color: rgb(30, 155, 232); display: inline-block; color: rgb(255, 255, 255); float: right; box-sizing: border-box; background-color: rgb(30, 155, 232);"></section>
+	</section>
+	<section style="padding: 15px 10px 30px; margin-top: 15px; box-sizing: border-box;">
+		<p style="line-height: 1.75em;white-space: normal;text-align: center;">
+			<span style="color: #1E9BE8;"><strong>{{ activity.actName }}</strong></span>
+		</p>
+		<p style="line-height: 1.75em; white-space: normal;">
+			<br>
+		</p>
+		<p style="color: inherit; font-family: 微软雅黑; line-height: 2em; font-size: 14px; text-align: left; white-space: normal;">
+			<span style="font-size: 13px;"><strong>活动时间：</strong>{{ activity.actTime }}</span>
+		</p>
+		<p style="color: inherit; font-family: 微软雅黑; line-height: 2em; font-size: 14px; text-align: left; white-space: normal;">
+			<span style="font-size: 13px;"><strong>活动地点：</strong>{{ activity.actLoc }}</span>
+		</p>
+		<p style="color: inherit; font-family: 微软雅黑; line-height: 2em; font-size: 14px; text-align: left; white-space: normal;">
+			<span style="font-size: 13px;"><strong style="color: inherit; font-size: 1em; text-align: center;">活动简介：</strong><span style="font-size: 13px; color: inherit; text-align: center;">{{ activity.actIntru }}</span></span>
+		</p>
+		<p style="color: inherit; font-family: 微软雅黑; line-height: 2em; text-align: left; white-space: normal;">
+			<span style="font-size: 13px;"><strong><span style="font-size: 13px; line-height: 28px;">活动对象：</span></strong><span style="font-size: 13px; line-height: 28px;">{{ activity.actFor }}</span></span>
+		</p>
+		<p style="color: inherit; font-family: 微软雅黑; line-height: 2em; font-size: 14px; text-align: left; white-space: normal;">
+			<span style="font-size: 13px;"><strong style="color: inherit; text-align: center;">主办方：</strong><span style="font-size: 13px; text-align: center;">{{ activity.actPub }}</span></span>
+		</p>
+		<p style="color: rgb(62, 62, 62); font-family: 微软雅黑; font-size: 1em; line-height: 2em; text-align: left; white-space: normal;">
+			<span style="font-size: 13px;"><strong>报名方式：</strong><span style="font-size: 13px; line-height: 28px;">{{ activity.actJoin }}</span></span>
+		</p>
+		<p style="color: rgb(62, 62, 62); font-family: 微软雅黑; font-size: 1em; line-height: 2em; text-align: left; white-space: normal;">
+			<span style="font-size: 13px;"><strong><span style="font-size: 13px; line-height: 28px;">报名截止日期：</span></strong><span style="font-size: 13px; line-height: 28px;">{{ activity.actDDL }}</span></span>
+		</p>
 
-            <!-- 主体内容 -->
-            <section class="mainContent" style="padding: 8px 15px;" >
-                <p style="font-size: 1em;">
-                    <strong><span style="font-size: 20px;color: #062d92;">{{ activity.actName }}</span></strong>
-                </p>
-                <p style="font-size: 1em;">
-                    <br/>
-                </p>
-                <p style="font-size: 14px; color: inherit; text-align: left;">
-                    <strong><span style="font-size: 16px;">活动时间：</span></strong><span style="font-size: 16px;">{{ activity.actTime }}</span>
-                </p>
-                <p style="font-size: 14px; color: inherit; text-align: left;">
-                    <span style="font-size: 16px;"><strong>活动地点：</strong>{{ activity.actLoc }}</span>
-                </p>
-                <p style="font-size: 14px; color: inherit; text-align: left;">
-                    <span style="font-size: 16px;"><strong style="color: inherit; font-size: 1em; text-align: center;">活动简介：</strong><span style="color: inherit; text-align: center;">{{ activity.actIntru }}</span></span>
-                </p>
-                <p style="text-align: left; color: inherit;">
-                    <strong><span style="line-height: 28px;">活动对象：</span></strong><span style="line-height: 28px;">{{ activity.actFor }}</span>
-                </p>
-                <p style="font-size: 14px; color: inherit; text-align: left;">
-                    <strong style="color: inherit; text-align: center;"><span style="font-size: 16px;">主办方：</span></strong><span style="text-align: center; font-size: 16px; line-height: 28px; ">{{ activity.actPub }}</span>
-                </p>
-                <p style="font-size: 1em; text-align: left;">
-                    <strong>报名方式：</strong><span style=" line-height: 28px;">{{ activity.actJoin }}</span>
-                </p>
-                <p style="font-size: 1em; text-align: left;">
-                    <strong><span style="line-height: 28px; ">报名截止日期：</span></strong><span style="line-height: 28px; ">{{ activity.actDDL }}</span>
-                </p>
-                {% if activity.welTime != "" %}
-                    <p style="font-size: 1em; text-align: left;">
-                        <span style=""><strong style="line-height: 28px;">公益时：<span style="color:#b11e1e;">{{ activity.welTime }}</span></strong></span>                    </p>
-                {% end %}
-                
-                {% if activity.PEChapter != "" %}
-                    <p style="font-size: 1em; text-align: left;">
-                        <span style=""><strong style="line-height: 28px;">体育章：<span style="color: #03D6D2;">{{activity.PEChapter}}</span></strong></span>
-                    </p>
-                {% end %}
 
-                {% if activity.other != "" %}
-                    <p style="font-size: 1em; text-align: left;">
-                        <span style=""><strong style="line-height: 28px;">其他奖励：<span style="color: #03D6D2;">{{ activity.other }} </span></strong></span>
-                    </p>
-                {% end %}
+        {% if activity.welTime != "" %}
+            <p style="color: rgb(62, 62, 62); font-family: 微软雅黑; font-size: 1em; line-height: 2em; text-align: left; white-space: normal;">
+            	<span style="font-size: 13px;"><strong style="line-height: 28px;">公益时：<span style="font-size: 13px; color: #1E9BE8;">{{ activity.welTime }}</span></strong></span>
+            </p>
+        {% end %}
+        
+        {% if activity.PEChapter != "" %}
+            <p style="color: rgb(62, 62, 62); font-family: 微软雅黑; font-size: 1em; line-height: 2em; text-align: left; white-space: normal;">
+            	<span style="font-size: 13px;"><strong style="line-height: 28px;">体育章：<span style="font-size: 13px; color: #1E9BE8;">{{activity.PEChapter}}</span></strong></span>
+            </p>
+        {% end %}
 
-                {% if activity.actDem != "" %}
-                    <p style="font-size: 1em; text-align: left;">
-                        <span style=" line-height: 28px;"><strong style="line-height: 25.6px;"><span style="line-height: 23.4px;"><strong>活动要求：</strong></span></strong></span><span style=" line-height: 25.6px;">{{ activity.actDem }}</span>
-                    </p>
-                {% end %}
+        {% if activity.other != "" %}
+            <p style="color: rgb(62, 62, 62); font-family: 微软雅黑; font-size: 1em; line-height: 2em; text-align: left; white-space: normal;">
+            	<span style="font-size: 13px;"><strong style="line-height: 28px;">其他奖励：<span style="font-size: 13px; color: #1E9BE8;">{{activity.other}}</span></strong></span>
+            </p>
+        {% end %}
 
-                <p style="font-size: 1em; text-align: left;">
-                    <span style=" line-height: 28px;"><strong style="line-height: 25.6px;"><span style="line-height: 23.4px;"><strong>活动详情：</strong></span></strong></span><span style=" line-height: 25.6px;">{{ activity.actDetail }}</span>
-                    <br>
-                    {% if activity.QRImageName != "no_image" %}
-                    <p style="margin-bottom:-20px">
-                        <img src="/ImageBase/{{ activity.QRImageName }}" style="height:160px;text-align:center;">
-                    </p>
-                    {% end %}
-                </p>
-            </section>
+        {% if activity.actDem != "" %}
+            <p style="color: rgb(62, 62, 62); font-family: 微软雅黑; font-size: 1em; line-height: 2em; text-align: left; white-space: normal;">
+            	<span style="font-size: 13px;"><strong style="line-height: 28px;">活动要求：<span style="font-size: 13px; color: #1E9BE8;">{{activity.actDem}}</span></strong></span>
+            </p>
 
-        </section>
-    </section>
+        {% end %}
+
+
+		<p style="color: rgb(62, 62, 62); font-family: 微软雅黑; font-size: 1em; line-height: 2em; text-align: left; white-space: normal;">
+			<span style="font-size: 13px;"><strong style="line-height: 28px;">其他奖励：<span style="font-size: 13px; color: #1E9BE8;">跑前8，都有奖金， 凡参加，都有奖牌！ 纪念版跑步衫+背包+神秘奖品</span></strong></span>
+		</p>
+
+
+
+		<p style="color: rgb(62, 62, 62); font-family: 微软雅黑; font-size: 1em; line-height: 2em; text-align: left; white-space: normal;">
+			<span style="font-size: 13px;"><span style="font-size: 13px; line-height: 28px;"><strong style="line-height: 25.6px;"><span style="font-size: 13px; line-height: 23.4px;"><strong>活动要求：</strong></span></strong></span><span style="font-size: 13px; line-height: 25.6px;">活动费用：专业组（计时竞赛）65元/人 ；体验组（体验享受）48元/人</span></span>
+		</p>
+		<p style="color: rgb(62, 62, 62); font-family: 微软雅黑; font-size: 1em; line-height: 2em; text-align: left; white-space: normal;">
+			<span style="font-size: 13px;"><span style="font-size: 13px; line-height: 28px;"><strong style="line-height: 25.6px;"><span style="font-size: 13px; line-height: 23.4px;"><strong>活动详情：</strong></span></strong></span><span style="font-size: 13px; line-height: 25.6px;">{{ activity.actDetail }}</span>&nbsp;</span><br>
+		</p>
+            <br>
+            {% if activity.QRImageName != "no_image" %}
+            <p style="margin-bottom:10px;">
+                <img src="/ImageBase/{{ activity.QRImageName }}" style="height:160px;text-align:center;">
+            </p>
+            {% end %}
+	</section>
 </section>
-
-<p>
-    <br/>
-</p>

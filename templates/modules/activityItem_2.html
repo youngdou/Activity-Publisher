@@ -1,0 +1,80 @@
+<section class="" data-id="85951" data-color="#062D92" data-custom="#062D92" style="border: 0px none;">
+    <section style="margin-top: 1em; margin-bottom: 0.5em;">
+        <section style="margin-left: 1.3em; padding: 10px; border: 2px solid rgb(6, 45, 146); text-align: center;border-radius:5px;">
+          <!-- 序号 -->
+            <section style="margin-top: -1.3em; margin-left: -1.3em; padding: 5px; font-size: 1.5em; border-radius: 50%; width: 2em; height: 2em; display: inline-block; float: left; vertical-align: top; color: rgb(255, 255, 255); background-color: rgb(6, 45, 146);">
+                <section class="" data-original-title="" title="" style="color: inherit;">
+                    {{ index }}
+                </section>
+            </section>
+
+            <!-- 主体内容 -->
+            <section class="mainContent" style="padding: 8px 15px;" >
+                <p style="font-size: 1em;">
+                    <strong><span style="font-size: 20px;color: #062d92;">{{ activity.actName }}</span></strong>
+                </p>
+                <p style="font-size: 1em;">
+                    <br/>
+                </p>
+                <p style="font-size: 14px; color: inherit; text-align: left;">
+                    <strong><span style="font-size: 16px;">活动时间：</span></strong><span style="font-size: 16px;">{{ activity.actTime }}</span>
+                </p>
+                <p style="font-size: 14px; color: inherit; text-align: left;">
+                    <span style="font-size: 16px;"><strong>活动地点：</strong>{{ activity.actLoc }}</span>
+                </p>
+                <p style="font-size: 14px; color: inherit; text-align: left;">
+                    <span style="font-size: 16px;"><strong style="color: inherit; font-size: 1em; text-align: center;">活动简介：</strong><span style="color: inherit; text-align: center;">{{ activity.actIntru }}</span></span>
+                </p>
+                <p style="text-align: left; color: inherit;">
+                    <strong><span style="line-height: 28px;">活动对象：</span></strong><span style="line-height: 28px;">{{ activity.actFor }}</span>
+                </p>
+                <p style="font-size: 14px; color: inherit; text-align: left;">
+                    <strong style="color: inherit; text-align: center;"><span style="font-size: 16px;">主办方：</span></strong><span style="text-align: center; font-size: 16px; line-height: 28px; ">{{ activity.actPub }}</span>
+                </p>
+                <p style="font-size: 1em; text-align: left;">
+                    <strong>报名方式：</strong><span style=" line-height: 28px;">{{ activity.actJoin }}</span>
+                </p>
+                <p style="font-size: 1em; text-align: left;">
+                    <strong><span style="line-height: 28px; ">报名截止日期：</span></strong><span style="line-height: 28px; ">{{ activity.actDDL }}</span>
+                </p>
+                {% if activity.welTime != "" %}
+                    <p style="font-size: 1em; text-align: left;">
+                        <span style=""><strong style="line-height: 28px;">公益时：<span style="color:#b11e1e;">{{ activity.welTime }}</span></strong></span>                    </p>
+                {% end %}
+                
+                {% if activity.PEChapter != "" %}
+                    <p style="font-size: 1em; text-align: left;">
+                        <span style=""><strong style="line-height: 28px;">体育章：<span style="color: #03D6D2;">{{activity.PEChapter}}</span></strong></span>
+                    </p>
+                {% end %}
+
+                {% if activity.other != "" %}
+                    <p style="font-size: 1em; text-align: left;">
+                        <span style=""><strong style="line-height: 28px;">其他奖励：<span style="color: #03D6D2;">{{ activity.other }} </span></strong></span>
+                    </p>
+                {% end %}
+
+                {% if activity.actDem != "" %}
+                    <p style="font-size: 1em; text-align: left;">
+                        <span style=" line-height: 28px;"><strong style="line-height: 25.6px;"><span style="line-height: 23.4px;"><strong>活动要求：</strong></span></strong></span><span style=" line-height: 25.6px;">{{ activity.actDem }}</span>
+                    </p>
+                {% end %}
+
+                <p style="font-size: 1em; text-align: left;">
+                    <span style=" line-height: 28px;"><strong style="line-height: 25.6px;"><span style="line-height: 23.4px;"><strong>活动详情：</strong></span></strong></span><span style=" line-height: 25.6px;">{{ activity.actDetail }}</span>
+                    <br>
+                    {% if activity.QRImageName != "no_image" %}
+                    <p style="margin-bottom:-20px">
+                        <img src="/ImageBase/{{ activity.QRImageName }}" style="height:160px;text-align:center;">
+                    </p>
+                    {% end %}
+                </p>
+            </section>
+
+        </section>
+    </section>
+</section>
+
+<p>
+    <br/>
+</p>
